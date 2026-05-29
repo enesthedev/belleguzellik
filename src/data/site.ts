@@ -1,7 +1,7 @@
 // Tek kaynak: işletme bilgileri ve iletişim. Gerçek değerlerle değiştirin.
 
-const RAW_PHONE = '+90 552 000 00 00' // görünen telefon
-const RAW_WHATSAPP = '905520000000' // wa.me için, ülke kodu + numara, boşluksuz
+const RAW_PHONE = '+90 543 896 65 43' // görünen telefon
+const RAW_WHATSAPP = '905438966543' // wa.me için, ülke kodu + numara, boşluksuz
 
 export const site = {
   name: 'Belle Güzellik',

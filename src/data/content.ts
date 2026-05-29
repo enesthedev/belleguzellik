@@ -126,19 +126,30 @@ export const features: Feature[] = [
 ]
 
 // Görseller: dilediğiniz zaman /public klasörüne ekleyip yollarını buradan değiştirin.
-const img = (id: string, w = 900) =>
+export const img = (id: string, w = 900) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`
 
-export const heroImage = img('photo-1560066984-138dadb4c035', 1100)
+export const heroImage = img('photo-1560066984-138dadb4c035', 1600)
 export const aboutImage = img('photo-1521590832167-7bcbfaa6381f', 1000)
+export const bannerImage = img('photo-1633681926022-84c23e8cb2d6', 1600)
+export const contactImage = img('photo-1559599101-f09722fb4948', 1600)
 
 export const gallery: GalleryImage[] = [
-  { src: img('photo-1562322140-8baeececf3df'), alt: 'Modern kuaför salonu' },
-  { src: img('photo-1605497788044-5a32c7078486'), alt: 'Saç boyama uygulaması' },
-  { src: img('photo-1595476108010-b4d1f102b1b1'), alt: 'Şekillendirilmiş uzun saç' },
+  { src: img('photo-1570172619644-dfd03ed5d881'), alt: 'Lazer epilasyon' },
+  {
+    src: img('photo-1605497788044-5a32c7078486'),
+    alt: 'Saç boyama uygulaması',
+  },
+  {
+    src: img('photo-1595476108010-b4d1f102b1b1'),
+    alt: 'Şekillendirilmiş uzun saç',
+  },
   { src: img('photo-1492106087820-71f1a00d2b11'), alt: 'Doğal dalgalı saç' },
   { src: img('photo-1559599101-f09722fb4948'), alt: 'Fön ve şekillendirme' },
-  { src: img('photo-1633681926022-84c23e8cb2d6'), alt: 'Saç bakımı ve parlaklık' },
+  {
+    src: img('photo-1633681926022-84c23e8cb2d6'),
+    alt: 'Saç bakımı ve parlaklık',
+  },
 ]
 
 export const testimonials: Testimonial[] = [
