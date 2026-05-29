@@ -1,16 +1,20 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { SiteHeader } from '#/components/site-header'
 import { Hero } from '#/components/hero'
-import { StatsBar } from '#/components/stats-bar'
 import { Services } from '#/components/services'
-import { Features } from '#/components/features'
+import { HoursBand } from '#/components/hours-band'
 import { Gallery } from '#/components/gallery'
-import { About } from '#/components/about'
+import { BrandBanner } from '#/components/brand-banner'
+import { Products } from '#/components/products'
 import { Testimonials } from '#/components/testimonials'
+import { Team } from '#/components/team'
+import { Pricing } from '#/components/pricing'
 import { Faq } from '#/components/faq'
-import { CtaSection } from '#/components/cta-section'
+import { Contact } from '#/components/contact'
 import { SiteFooter } from '#/components/site-footer'
 import { FloatingContact } from '#/components/floating-contact'
+import { Figure } from '#/components/ui/figure'
+import { contactImage } from '#/data/content'
 
 export const Route = createFileRoute('/')({ component: Home })
 
@@ -21,14 +25,24 @@ function Home() {
       <SiteHeader />
       <main>
         <Hero />
-        <StatsBar />
         <Services />
-        <Features />
+        <HoursBand />
         <Gallery />
-        <About />
+        <BrandBanner />
+        <Products />
         <Testimonials />
+        <Team />
+        <Pricing />
         <Faq />
-        <CtaSection />
+        <section className="w-full">
+          <Figure
+            src={contactImage}
+            alt="Belle Güzellik'te saç bakımı"
+            className="h-[42vh] w-full md:h-[56vh]"
+            imgClassName="grayscale"
+          />
+        </section>
+        <Contact />
       </main>
       <SiteFooter />
       <FloatingContact />
