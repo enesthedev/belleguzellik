@@ -50,3 +50,12 @@ Add shadcn components with: `pnpm dlx shadcn@latest add <component>` (new-york s
   Reuse these tokens/classes instead of hardcoding new colors.
 - React Compiler is enabled (babel plugin in `vite.config.ts`) — don't add manual `useMemo`/`useCallback` purely for memoization.
 - TypeScript is strict with `noUnusedLocals`/`noUnusedParameters` — remove unused code rather than leaving it.
+
+## Commits
+
+- Split work into **focused, logical commits** grouped by concern (e.g. data/content, design
+  system, a section's redesign, new sections, routing/SEO) — not one giant catch-all commit.
+- Order commits so each one builds on its own where practical (data → design system → components →
+  composition).
+- Use **Conventional Commit** prefixes: `feat:`, `fix:`, `refactor:`, `style:`, `docs:`, `chore:`.
+- Write subjects in **English**, imperative mood, concise — even though the UI copy is Turkish.
