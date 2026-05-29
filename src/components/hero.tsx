@@ -1,111 +1,134 @@
-import { Star } from 'lucide-react'
-import { cn } from '#/lib/utils'
-import { site, whatsappLink } from '#/data/site'
+import { useState } from 'react'
+import { site } from '#/data/site'
 import { heroImage } from '#/data/content'
-import { buttonVariants } from '#/components/ui/button'
 import { Figure } from '#/components/ui/figure'
+
+// Türk cep telefonu formatı: 0XXX XXX XX XX
+function formatTrPhone(value: string) {
+  let d = value.replace(/\D/g, '')
+  if (d.startsWith('90')) d = d.slice(2)
+  if (d.startsWith('0')) d = d.slice(1)
+  d = d.slice(0, 10)
+  const groups = [
+    d.slice(0, 3),
+    d.slice(3, 6),
+    d.slice(6, 8),
+    d.slice(8, 10),
+  ].filter(Boolean)
+  return groups.length ? '0' + groups.join(' ') : ''
+}
+
+function BookingBar() {
+  const [date, setDate] = useState('')
+  const [time, setTime] = useState('')
+  const [phone, setPhone] = useState('')
+
+  function submit(e: React.FormEvent) {
+    e.preventDefault()
+    const parts = [
+      'Merhaba, randevu almak istiyorum.',
+      date && `Tarih: ${date}`,
+      time && `Saat: ${time}`,
+      phone && `Telefon: ${phone}`,
+    ].filter(Boolean)
+    const url = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(parts.join(' '))}`
+    window.open(url, '_blank', 'noopener')
+  }
+
+  const field =
+    'h-12 w-full bg-transparent text-sm text-ink placeholder:text-ink-faint focus:outline-none'
+
+  return (
+    <form
+      onSubmit={submit}
+      className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line sm:grid-cols-[1fr_1fr_1fr_auto]"
+    >
+      <label className="flex flex-col bg-paper px-5 py-2">
+        <span className="text-[0.6rem] uppercase tracking-[0.2em] text-ink-faint">
+          Tarih
+        </span>
+        <input
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+          className={field}
+        />
+      </label>
+      <label className="flex flex-col bg-paper px-5 py-2">
+        <span className="text-[0.6rem] uppercase tracking-[0.2em] text-ink-faint">
+          Saat
+        </span>
+        <input
+          type="time"
+          value={time}
+          onChange={(e) => setTime(e.target.value)}
+          className={field}
+        />
+      </label>
+      <label className="flex flex-col bg-paper px-5 py-2">
+        <span className="text-[0.6rem] uppercase tracking-[0.2em] text-ink-faint">
+          Telefon
+        </span>
+        <input
+          type="tel"
+          inputMode="numeric"
+          autoComplete="tel"
+          maxLength={14}
+          pattern="0[5][0-9]{2} [0-9]{3} [0-9]{2} [0-9]{2}"
+          title="Örnek: 0543 896 65 43"
+          value={phone}
+          onChange={(e) => setPhone(formatTrPhone(e.target.value))}
+          placeholder="0543 896 65 43"
+          className={field}
+        />
+      </label>
+      <button
+        type="submit"
+        className="bg-ink px-9 text-[0.74rem] font-medium uppercase tracking-[0.18em] text-cream transition-colors hover:bg-[#2c2520]"
+      >
+        Randevu Al
+      </button>
+    </form>
+  )
+}
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-14 pb-16 sm:pt-20 md:pb-24">
-      {/* Atmosfer */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-24 -left-24 size-[34rem] rounded-full bg-blush/30 blur-[110px]"
+    <section className="relative flex min-h-[92vh] w-full flex-col overflow-hidden">
+      <Figure
+        src={heroImage}
+        alt="Belle Güzellik salonu"
+        priority
+        className="absolute inset-0 h-full w-full"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-10 right-0 size-[28rem] rounded-full bg-gold/20 blur-[120px]"
+        className="absolute inset-0 bg-gradient-to-b from-ink/55 via-ink/25 to-ink/65"
       />
 
-      <div className="mx-auto grid w-[min(1180px,calc(100%-2rem))] items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
-        <div className="max-w-xl">
-          <span className="island-kicker rise-in" style={{ animationDelay: '40ms' }}>
-            {site.address.district.split(' / ')[1] ?? 'Trabzon'} · {site.tagline}
-          </span>
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 pt-24 text-center text-cream">
+        <span
+          className="rise-in text-[0.7rem] font-semibold uppercase tracking-[0.34em] text-cream/80"
+          style={{ animationDelay: '60ms' }}
+        >
+          {site.address.district.split(' / ')[1] ?? 'Trabzon'} · {site.tagline}
+        </span>
+        <h1
+          className="display-xl rise-in mt-6 text-[clamp(4.5rem,17vw,15rem)] text-cream"
+          style={{ animationDelay: '140ms' }}
+        >
+          Belle
+        </h1>
+        <p
+          className="rise-in mt-2 max-w-md text-base text-cream/85 sm:text-lg"
+          style={{ animationDelay: '240ms' }}
+        >
+          {site.motto}
+        </p>
+      </div>
 
-          <h1
-            className="display-title rise-in mt-6 text-[2.7rem] leading-[1.04] text-ink sm:text-5xl md:text-6xl"
-            style={{ animationDelay: '120ms' }}
-          >
-            Saçınızı <em>uzman</em> ellere bırakın.
-          </h1>
-
-          <p
-            className="rise-in mt-6 max-w-lg text-[1.05rem] leading-relaxed text-ink-soft"
-            style={{ animationDelay: '220ms' }}
-          >
-            Belle Güzellik’te kesimden renge, balyajdan keratin bakımına ve gelin
-            saçına kadar her hizmet; hijyen, deneyim ve size özel ilgiyle sunulur.
-          </p>
-
-          <div
-            className="rise-in mt-9 flex flex-wrap items-center gap-3"
-            style={{ animationDelay: '320ms' }}
-          >
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noreferrer"
-              className={buttonVariants({ variant: 'solid', size: 'lg' })}
-            >
-              Randevu Al
-            </a>
-            <a
-              href="#hizmetler"
-              className={buttonVariants({ variant: 'outline', size: 'lg' })}
-            >
-              Hizmetleri Keşfet
-            </a>
-          </div>
-
-          <div
-            className="rise-in mt-10 flex items-center gap-4"
-            style={{ animationDelay: '420ms' }}
-          >
-            <div className="flex" aria-hidden>
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="size-4 fill-gold text-gold" />
-              ))}
-            </div>
-            <p className="text-sm text-ink-soft">
-              <span className="font-semibold text-ink">4.9/5</span> · 5.000+ mutlu
-              müşteri
-            </p>
-          </div>
-        </div>
-
-        {/* Görsel kompozisyon */}
-        <div className="rise-in relative" style={{ animationDelay: '260ms' }}>
-          <div className="island-shell overflow-hidden rounded-[2rem] p-2">
-            <Figure
-              src={heroImage}
-              alt="Belle Güzellik saç uygulaması"
-              priority
-              className="aspect-[4/5] w-full rounded-[1.6rem]"
-            />
-          </div>
-
-          <div className="island-shell absolute -bottom-6 -left-4 hidden items-center gap-3 rounded-2xl px-5 py-4 sm:flex">
-            <span className="grid size-10 place-items-center rounded-full bg-gold/15 text-gold-deep">
-              <Star className="size-5 fill-gold-soft" />
-            </span>
-            <div className="leading-tight">
-              <p className="font-serif text-lg text-ink">10+ Yıl</p>
-              <p className="text-xs text-ink-soft">Uzman deneyim</p>
-            </div>
-          </div>
-
-          <div
-            aria-hidden
-            className={cn(
-              'absolute -top-5 -right-3 hidden rotate-3 rounded-full px-4 py-2 sm:block',
-              'island-shell font-serif italic text-rose',
-            )}
-          >
-            Belle
-          </div>
-        </div>
+      <div className="relative z-10 mx-auto mb-10 w-[min(1100px,calc(100%-2rem))]">
+        <BookingBar />
       </div>
     </section>
   )

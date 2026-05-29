@@ -28,8 +28,8 @@ export function Faq() {
               <div
                 key={item.q}
                 className={cn(
-                  'island-shell rounded-2xl px-2 transition-colors',
-                  isOpen && 'border-gold/40',
+                  'island-shell px-2 transition-colors',
+                  isOpen && 'border-ink/40',
                 )}
               >
                 <h3>
@@ -40,10 +40,12 @@ export function Faq() {
                     aria-controls={`faq-panel-${i}`}
                     className="flex w-full items-center justify-between gap-4 px-4 py-5 text-left"
                   >
-                    <span className="font-serif text-lg text-ink">{item.q}</span>
+                    <span className="font-serif text-lg text-ink">
+                      {item.q}
+                    </span>
                     <ChevronDown
                       className={cn(
-                        'size-5 shrink-0 text-gold-deep transition-transform duration-300',
+                        'size-5 shrink-0 text-ink-soft transition-transform duration-300',
                         isOpen && 'rotate-180',
                       )}
                     />
@@ -54,7 +56,9 @@ export function Faq() {
                   role="region"
                   className={cn(
                     'grid transition-all duration-300 ease-out',
-                    isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0',
+                    isOpen
+                      ? 'grid-rows-[1fr] opacity-100'
+                      : 'grid-rows-[0fr] opacity-0',
                   )}
                 >
                   <div className="overflow-hidden">

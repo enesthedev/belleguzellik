@@ -15,49 +15,64 @@ export function SiteHeader() {
   }, [open])
 
   return (
-    <header className="relative z-40 border-b border-line/60">
-      <div className="mx-auto flex h-20 w-[min(1180px,calc(100%-2rem))] items-center justify-between gap-4">
-        <a href="#top" className="flex items-center" aria-label={site.name}>
+    <header className="absolute inset-x-0 top-0 z-50 text-cream">
+      <div className="mx-auto flex h-20 w-[min(1240px,calc(100%-2rem))] items-center justify-between gap-4">
+        <a href="#top" aria-label={site.name} className="flex items-center">
           <img
             src="/belle-guzellik.png"
             alt={site.name}
-            className="h-12 w-auto sm:h-14"
+            className="h-12 w-auto brightness-0 invert"
           />
         </a>
 
-        <nav className="hidden items-center gap-10 lg:flex" aria-label="Ana menü">
+        <nav
+          className="hidden items-center gap-9 lg:flex"
+          aria-label="Ana menü"
+        >
           {site.nav.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="nav-link text-[0.78rem] font-medium uppercase tracking-[0.18em]"
+              className="nav-link text-[0.72rem] font-medium uppercase tracking-[0.2em]"
             >
               {item.label}
             </a>
           ))}
         </nav>
 
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-label={open ? 'Menüyü kapat' : 'Menüyü aç'}
-          aria-expanded={open}
-          className="grid size-11 place-items-center rounded-full border border-line text-ink lg:hidden"
-        >
-          {open ? <X className="size-5" /> : <Menu className="size-5" />}
-        </button>
+        <div className="flex items-center gap-3">
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noreferrer"
+            className={cn(
+              buttonVariants({ variant: 'light', size: 'sm' }),
+              'hidden lg:inline-flex',
+            )}
+          >
+            Randevu Al
+          </a>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-label={open ? 'Menüyü kapat' : 'Menüyü aç'}
+            aria-expanded={open}
+            className="grid size-11 place-items-center border border-cream/40 text-cream lg:hidden"
+          >
+            {open ? <X className="size-5" /> : <Menu className="size-5" />}
+          </button>
+        </div>
       </div>
-      <div aria-hidden className="gold-rule opacity-50" />
 
       {/* Mobil menü */}
       <div
         className={cn(
-          'overflow-hidden border-t border-line bg-[var(--header-bg)] backdrop-blur-md transition-[max-height,opacity] duration-300 lg:hidden',
+          'overflow-hidden bg-ink/95 backdrop-blur-md transition-[max-height,opacity] duration-300 lg:hidden',
           open ? 'max-h-[80vh] opacity-100' : 'max-h-0 opacity-0',
         )}
       >
         <nav
-          className="mx-auto flex w-[min(1180px,calc(100%-2rem))] flex-col gap-1 py-4"
+          className="mx-auto flex w-[min(1240px,calc(100%-2rem))] flex-col gap-1 py-4"
           aria-label="Mobil menü"
         >
           {site.nav.map((item) => (
@@ -65,7 +80,7 @@ export function SiteHeader() {
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="rounded-xl px-4 py-3 text-base font-medium text-ink-soft transition-colors hover:bg-ink/5 hover:text-ink"
+              className="px-2 py-3 text-sm font-medium uppercase tracking-[0.18em] text-cream/80 transition-colors hover:text-cream"
             >
               {item.label}
             </a>
@@ -75,7 +90,10 @@ export function SiteHeader() {
             target="_blank"
             rel="noreferrer"
             onClick={() => setOpen(false)}
-            className={cn(buttonVariants({ variant: 'solid', size: 'md' }), 'mt-2')}
+            className={cn(
+              buttonVariants({ variant: 'light', size: 'md' }),
+              'mt-2',
+            )}
           >
             Randevu Al
           </a>
