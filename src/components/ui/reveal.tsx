@@ -1,14 +1,19 @@
 import { useEffect, useRef, useState } from 'react'
 import { cn } from '#/lib/utils'
 
-interface RevealProps {
+interface RevealProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode
-  className?: string
   delay?: number
-  as?: 'div' | 'li' | 'article' | 'section'
+  as?: 'div' | 'li' | 'ul' | 'article' | 'section' | 'form'
 }
 
-export function Reveal({ children, className, delay = 0, as = 'div' }: RevealProps) {
+export function Reveal({
+  children,
+  className,
+  delay = 0,
+  as = 'div',
+  ...rest
+}: RevealProps) {
   const ref = useRef<HTMLElement | null>(null)
   const [visible, setVisible] = useState(false)
 
@@ -40,6 +45,7 @@ export function Reveal({ children, className, delay = 0, as = 'div' }: RevealPro
       ref={ref as never}
       className={cn('reveal', visible && 'is-visible', className)}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
+      {...rest}
     >
       {children}
     </Tag>

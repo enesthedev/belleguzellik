@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700&display=swap');
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
@@ -7,95 +6,53 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Warm Elegant palette — Belle Güzellik */
-  --ink: #2a221f;
-  --ink-soft: #6a5d54;
-  --ink-faint: #9a8d82;
-  --blush: #dc9d94;
-  --blush-soft: #f3ddd6;
-  --rose-deep: #b06c61;
-  --gold: #c7a25b;
-  --gold-deep: #9d7a30;
-  --gold-soft: #ead9af;
-  --cream: #fcf7f0;
-  --cream-deep: #f0e5d7;
-  --paper: #fffdfb;
-  --surface: rgba(255, 255, 255, 0.72);
-  --surface-strong: rgba(255, 253, 251, 0.95);
-  --line: rgba(42, 34, 31, 0.13);
-  --line-strong: rgba(42, 34, 31, 0.22);
-  --inset-glint: rgba(255, 255, 255, 0.92);
-  --kicker: var(--gold-deep);
-  --bg-base: #f7efe3;
-  --header-bg: rgba(252, 247, 240, 0.82);
-  --hero-a: rgba(220, 157, 148, 0.24);
-  --hero-b: rgba(199, 162, 91, 0.2);
+  /* Neutral editorial palette — Belle Güzellik (Curtis-style) */
+  --ink: #17120e;
+  --ink-soft: #5c544c;
+  --ink-faint: #837a6f;
+  /* Accent token names kept for compatibility, retoned to neutral stone */
+  --blush: #cabfb0;
+  --blush-soft: #ece6dd;
+  --rose-deep: #8a7d6e;
+  --gold: #b7a994;
+  --gold-deep: #6f6456;
+  --gold-soft: #e4ded4;
+  --stone: #b7a994;
+  --cream: #f4f1ec;
+  --cream-deep: #e9e3d9;
+  --paper: #ffffff;
+  --dark: #161210;
+  --dark-fg: #ece6dd;
+  --dark-soft: #b7ab9d;
+  --surface: #ffffff;
+  --surface-strong: #ffffff;
+  --line: rgba(23, 18, 14, 0.12);
+  --line-strong: rgba(23, 18, 14, 0.22);
+  --inset-glint: rgba(255, 255, 255, 0.9);
+  --kicker: var(--ink-soft);
+  --bg-base: #f4f1ec;
+  --header-bg: rgba(244, 241, 236, 0.86);
 
-  --background: oklch(0.985 0.008 70);
-  --foreground: oklch(0.24 0.012 50);
+  --background: oklch(0.97 0.004 70);
+  --foreground: oklch(0.22 0.008 50);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.24 0.012 50);
+  --card-foreground: oklch(0.22 0.008 50);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.24 0.012 50);
-  --primary: oklch(0.27 0.014 48);
-  --primary-foreground: oklch(0.985 0.008 70);
-  --secondary: oklch(0.95 0.014 60);
-  --secondary-foreground: oklch(0.27 0.014 48);
-  --muted: oklch(0.95 0.012 65);
-  --muted-foreground: oklch(0.52 0.018 55);
-  --accent: oklch(0.8 0.07 72);
-  --accent-foreground: oklch(0.27 0.014 48);
+  --popover-foreground: oklch(0.22 0.008 50);
+  --primary: oklch(0.24 0.008 48);
+  --primary-foreground: oklch(0.97 0.004 70);
+  --secondary: oklch(0.95 0.006 60);
+  --secondary-foreground: oklch(0.24 0.008 48);
+  --muted: oklch(0.95 0.005 65);
+  --muted-foreground: oklch(0.5 0.01 55);
+  --accent: oklch(0.8 0.012 72);
+  --accent-foreground: oklch(0.24 0.008 48);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.9 0.012 65);
-  --input: oklch(0.9 0.012 65);
-  --ring: oklch(0.76 0.07 72);
-  --radius: 0.75rem;
-}
-
-.dark {
-  --ink: #f3e7df;
-  --ink-soft: #cdbcb0;
-  --ink-faint: #9c8d81;
-  --blush: #e0a89f;
-  --blush-soft: #3a2a28;
-  --rose-deep: #d99a90;
-  --gold: #d9b974;
-  --gold-deep: #e8d09a;
-  --gold-soft: #4a3d24;
-  --cream: #1a1512;
-  --cream-deep: #221b16;
-  --paper: #211a16;
-  --surface: rgba(33, 26, 22, 0.8);
-  --surface-strong: rgba(28, 22, 18, 0.92);
-  --line: rgba(243, 231, 223, 0.14);
-  --line-strong: rgba(243, 231, 223, 0.22);
-  --inset-glint: rgba(243, 231, 223, 0.08);
-  --kicker: var(--gold);
-  --bg-base: #15100d;
-  --header-bg: rgba(21, 16, 13, 0.82);
-  --hero-a: rgba(216, 154, 146, 0.14);
-  --hero-b: rgba(194, 162, 92, 0.12);
-
-  --background: oklch(0.18 0.008 50);
-  --foreground: oklch(0.95 0.01 70);
-  --card: oklch(0.2 0.01 50);
-  --card-foreground: oklch(0.95 0.01 70);
-  --popover: oklch(0.2 0.01 50);
-  --popover-foreground: oklch(0.95 0.01 70);
-  --primary: oklch(0.95 0.01 70);
-  --primary-foreground: oklch(0.24 0.012 50);
-  --secondary: oklch(0.3 0.012 55);
-  --secondary-foreground: oklch(0.95 0.01 70);
-  --muted: oklch(0.3 0.012 55);
-  --muted-foreground: oklch(0.72 0.014 60);
-  --accent: oklch(0.4 0.04 72);
-  --accent-foreground: oklch(0.95 0.01 70);
-  --destructive: oklch(0.45 0.16 26);
-  --destructive-foreground: oklch(0.95 0.01 70);
-  --border: oklch(0.32 0.012 55);
-  --input: oklch(0.32 0.012 55);
-  --ring: oklch(0.55 0.06 72);
+  --border: oklch(0.89 0.006 65);
+  --input: oklch(0.89 0.006 65);
+  --ring: oklch(0.55 0.01 60);
+  --radius: 0.25rem;
 }
 
 @theme inline {
@@ -111,9 +68,13 @@
   --color-gold: var(--gold);
   --color-gold-deep: var(--gold-deep);
   --color-gold-soft: var(--gold-soft);
+  --color-stone: var(--stone);
   --color-cream: var(--cream);
   --color-cream-deep: var(--cream-deep);
   --color-paper: var(--paper);
+  --color-dark: var(--dark);
+  --color-dark-fg: var(--dark-fg);
+  --color-dark-soft: var(--dark-soft);
   --color-line: var(--line);
 
   --color-background: var(--background);
@@ -135,10 +96,10 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 6px);
+  --radius-sm: calc(var(--radius));
+  --radius-md: calc(var(--radius) + 2px);
+  --radius-lg: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 8px);
 }
 
 html {
@@ -156,40 +117,32 @@ body {
   color: var(--ink);
   font-family: var(--font-sans);
   background-color: var(--bg-base);
-  background:
-    radial-gradient(1100px 620px at -8% -12%, var(--hero-a), transparent 58%),
-    radial-gradient(1050px 640px at 112% -10%, var(--hero-b), transparent 62%),
-    radial-gradient(760px 420px at 50% 118%, rgba(216, 154, 146, 0.1), transparent 66%),
-    linear-gradient(180deg, color-mix(in oklab, var(--cream) 60%, white) 0%, var(--cream) 46%, var(--cream-deep) 100%);
-  background-attachment: fixed;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Soft grain / atmosphere overlay */
+/* Very subtle paper grain for warmth */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: -1;
-  opacity: 0.5;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
   mix-blend-mode: multiply;
 }
 
-/* Base element styling lives in @layer base so Tailwind utility classes
-   (e.g. text-cream on a link-styled button) reliably override it. */
 @layer base {
   a {
-    color: var(--rose-deep);
+    color: inherit;
     text-decoration: none;
   }
 
   ::selection {
-    background: var(--blush-soft);
-    color: var(--ink);
+    background: var(--ink);
+    color: var(--cream);
   }
 }
 
@@ -200,12 +153,21 @@ body::after {
 .display-title {
   font-family: var(--font-serif);
   font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.02;
+  letter-spacing: -0.015em;
+  line-height: 1.04;
+}
+
+/* Oversized editorial display (hero monogram, banner words) */
+.display-xl {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
 }
 
 @layer components {
-  .display-title em {
+  .display-title em,
+  .display-xl em {
     font-style: italic;
     font-weight: 400;
     color: var(--rose-deep);
@@ -216,7 +178,7 @@ body::after {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  letter-spacing: 0.32em;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   font-weight: 600;
   font-size: 0.7rem;
@@ -227,42 +189,31 @@ body::after {
   content: '';
   width: 1.6rem;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold));
+  background: var(--stone);
 }
 
 .gold-rule {
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  background: var(--line);
 }
 
+/* Flat editorial surface — hairline border, square, no glass/shadow */
 .island-shell {
   border: 1px solid var(--line);
-  background: linear-gradient(165deg, var(--surface-strong), var(--surface));
-  box-shadow:
-    0 1px 0 var(--inset-glint) inset,
-    0 12px 30px -18px rgba(96, 64, 52, 0.2);
-  backdrop-filter: blur(6px);
+  background: var(--paper);
 }
 
 .feature-card {
   position: relative;
   border: 1px solid var(--line);
-  background: linear-gradient(165deg, color-mix(in oklab, var(--paper) 96%, white 4%), var(--surface));
-  box-shadow:
-    0 1px 0 var(--inset-glint) inset,
-    0 10px 26px -18px rgba(96, 64, 52, 0.18);
+  background: var(--paper);
   transition:
-    transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
     border-color 320ms ease,
-    box-shadow 320ms ease;
+    background-color 320ms ease;
 }
 
 .feature-card:hover {
-  transform: translateY(-4px);
-  border-color: color-mix(in oklab, var(--gold) 55%, var(--line));
-  box-shadow:
-    0 1px 0 var(--inset-glint) inset,
-    0 18px 36px -20px rgba(96, 64, 52, 0.22);
+  border-color: var(--ink);
 }
 
 button {
@@ -277,9 +228,10 @@ button {
 .nav-link {
   position: relative;
   text-decoration: none;
-  color: var(--ink-soft);
+  color: currentColor;
   font-weight: 500;
-  transition: color 180ms ease;
+  transition: opacity 180ms ease;
+  opacity: 0.75;
 }
 
 .nav-link::after {
@@ -288,16 +240,16 @@ button {
   left: 0;
   bottom: -6px;
   width: 100%;
-  height: 1.5px;
+  height: 1px;
   transform: scaleX(0);
   transform-origin: left;
-  background: linear-gradient(90deg, var(--gold), var(--blush));
+  background: currentColor;
   transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-link:hover,
 .nav-link.is-active {
-  color: var(--ink);
+  opacity: 1;
 }
 
 .nav-link:hover::after,
@@ -339,13 +291,17 @@ button {
   }
 }
 
-/* Scroll-triggered reveal */
+/* Scroll-triggered reveal — only hides content when JS is available, so
+   no-JS / pre-hydration / crawler renders show every section by default. */
 .reveal {
-  opacity: 0;
-  transform: translateY(28px);
   transition:
     opacity 800ms cubic-bezier(0.16, 1, 0.3, 1),
     transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(28px);
 }
 
 .reveal.is-visible {
@@ -354,8 +310,8 @@ button {
 }
 
 .site-footer {
-  border-top: 1px solid var(--line);
-  background: color-mix(in oklab, var(--cream-deep) 70%, transparent);
+  background: var(--dark);
+  color: var(--dark-fg);
 }
 
 @media (prefers-reduced-motion: reduce) {
